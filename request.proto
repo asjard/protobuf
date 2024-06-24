@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package asjard.api;
+
+option go_package = "github.com/asjard/asjard/pkg/protobuf/request;requestpb";
+
+// 分页请求
+message ReqWithPage {
+    int32  page = 1;
+    int32  size = 2;
+    string sort = 3;
+}

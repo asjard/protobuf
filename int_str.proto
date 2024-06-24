@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package asjard.api;
+
+option go_package = "github.com/asjard/asjard/pkg/protobuf/intstr;intstrpb";
+
+// int64类型或字符串类型
+// 接口返回的int64类型在js语言中会出现整形溢出
+message Int64OrString {
+    // 数据类型
+    IntOrStrType type = 1;
+    // 整形值
+    int64 int_val = 2;
+    // 字符串值
+    string str_val = 3;
+}
+
+// 整形或字符串
+enum IntOrStrType {
+    IS_INT = 0;
+    IS_STR = 1;
+}
