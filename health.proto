@@ -7,9 +7,12 @@ option go_package = "github.com/asjard/asjard/pkg/protobuf/healthpb;healthpb";
 import "github.com/asjard/protobuf/http.proto";
 
 service Health {
+    // healthCheck
     rpc Check(HealthCheckRequest) returns (HealthCheckResponse) {
         option (asjard.api.http) = {
             get : "/health"
+            api: "/"
+            version: "/"
         };
     };
 }

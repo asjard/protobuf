@@ -7,6 +7,7 @@ import "google/protobuf/descriptor.proto";
 option go_package = "github.com/asjard/asjard/pkg/protobuf/httppb;httppb";
 
 extend google.protobuf.MethodOptions { repeated Http http = 50000; }
+extend google.protobuf.ServiceOptions { Http serviceHttp = 60000; }
 
 message Http {
     // Refer to [selector][google.api.DocumentationRule.selector] for syntax details.
@@ -32,4 +33,10 @@ message Http {
         // Used for check a resource
         string head = 7;
     }
+    // api类型，如果为空则从package中解析
+    string api = 8;
+    // 接口版本，如果为空则从package中解析
+    string version =9;
+    // 接口分组
+    string group = 10;
 }
