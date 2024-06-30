@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package asjard.api;
 
-option go_package = "github.com/asjard/asjard/pkg/protobuf/request;requestpb";
+option go_package = "github.com/asjard/asjard/pkg/protobuf/requestpb;requestpb";
 
 // 分页请求
 message ReqWithPage {

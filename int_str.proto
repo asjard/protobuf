@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package asjard.api;
 
-option go_package = "github.com/asjard/asjard/pkg/protobuf/intstr;intstrpb";
+option go_package = "github.com/asjard/asjard/pkg/protobuf/intstrpb;intstrpb";
 
 // int64类型或字符串类型
 // 接口返回的int64类型在js语言中会出现整形溢出

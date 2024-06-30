@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package asjard.api.health;
 
-option go_package = "github.com/asjard/asjard/pkg/protobuf/health;healthpb";
+option go_package = "github.com/asjard/asjard/pkg/protobuf/healthpb;healthpb";
 
 import "github.com/asjard/protobuf/http.proto";
 

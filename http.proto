@@ -4,7 +4,7 @@ package asjard.api;
 
 import "google/protobuf/descriptor.proto";
 
-option go_package = "github.com/asjard/asjard/pkg/protobuf/annotations;annotations";
+option go_package = "github.com/asjard/asjard/pkg/protobuf/httppb;httppb";
 
 extend google.protobuf.MethodOptions { repeated Http http = 50000; }
 
