@@ -10,3 +10,8 @@ message ReqWithPage {
     int32  size = 2;
     string sort = 3;
 }
+
+// Id 请求
+message ReqWithId {
+    int64 id = 1;
+}
