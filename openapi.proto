@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package asjard.api;
+
+option go_package = "github.com/asjard/asjard/pkg/server/rest";
+
+import "github.com/asjard/protobuf/http.proto";
+import "google/protobuf/empty.proto";
+
+// OpenAPI相关文档
+service OpenAPI {
+    // 获取openapi yaml文件
+    rpc Yaml(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (asjard.api.http) = {
+            get : "/openapi.yml"
+            api : "/"
+            version : "/"
+        };
+    };
+    // 文档页面
+    rpc Page(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (asjard.api.http) = {
+            get : "/page/openapi"
+            api : "/"
+            version : "/"
+        };
+    };
+}
