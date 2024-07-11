@@ -31,12 +31,13 @@ message Http {
         string patch = 6;
 
         // Used for check a resource
-        string head = 7;
+        string head    = 7;
+        string options = 8;
     }
     // api类型，如果为空则从package中解析
-    string api = 8;
+    string api = 9;
     // 接口版本，如果为空则从package中解析
-    string version =9;
+    string version = 10;
     // 接口分组
-    string group = 10;
+    string group = 11;
 }
