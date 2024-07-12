@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package asjard.api;
+
+option go_package = "github.com/asjard/asjard/pkg/protobuf/metricspb";
+
+import "google/protobuf/empty.proto";
+import "github.com/asjard/protobuf/http.proto";
+
+// 监控指标相关接口
+service Metrics {
+    // 获取监控指标
+    rpc Fetch(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (asjard.api.http) = {
+            get : "/metrics"
+            api : "/"
+            version : "/"
+        };
+    }
+}
