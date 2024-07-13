@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package asjard.api;
 
-option go_package = "github.com/asjard/asjard/pkg/protobuf/metricspb";
+option go_package = "github.com/asjard/asjard/pkg/server/rest";
 
 import "google/protobuf/empty.proto";
 import "github.com/asjard/protobuf/http.proto";
