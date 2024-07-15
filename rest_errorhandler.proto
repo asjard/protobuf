@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package asjard.api;
+
+option go_package = "github.com/asjard/asjard/pkg/server/rest";
+
+import "google/protobuf/empty.proto";
+import "github.com/asjard/protobuf/http.proto";
+
+// ErrorHandler rest错误处理
+service ErrorHandler {
+    rpc NotFound(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (asjard.api.http) = {
+            get : "/not_found"
+        };
+    };
+    rpc MethodNotAllowed(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (asjard.api.http) = {
+            get : "/method_not_allowed"
+        };
+    };
+    rpc Panic(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (asjard.api.http) = {
+            get : "/panic"
+        };
+    };
+}
