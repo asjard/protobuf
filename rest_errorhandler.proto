@@ -9,19 +9,28 @@ import "github.com/asjard/protobuf/http.proto";
 
 // ErrorHandler rest错误处理
 service ErrorHandler {
+    // 页面未找到
     rpc NotFound(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/not_found"
         };
     };
+    // 请求方式错误
     rpc MethodNotAllowed(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/method_not_allowed"
         };
     };
+    // 奔溃
     rpc Panic(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/panic"
+        };
+    };
+    // 错误
+    rpc Error(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (asjard.api.http) = {
+            get : "/error"
         };
     };
 }
