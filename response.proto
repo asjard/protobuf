@@ -6,8 +6,14 @@ option go_package = "github.com/asjard/asjard/pkg/protobuf/responsepb";
 import "google/protobuf/any.proto";
 
 message Response {
-    uint32              code    = 1;
-    string              message = 2;
-    string              doc     = 3;
-    google.protobuf.Any data    = 4;
+    uint32 code = 1;
+    // http状态码
+    uint32 status = 2;
+    // 系统码
+    uint32 system = 3;
+    // 请求是否成功
+    bool                success = 4;
+    string              message = 5;
+    string              doc     = 6;
+    google.protobuf.Any data    = 7;
 }
