@@ -5,15 +5,21 @@ package asjard.api;
 option go_package = "github.com/asjard/asjard/pkg/protobuf/responsepb";
 import "google/protobuf/any.proto";
 
+// 通用请求返回
 message Response {
+    // 原始错误码
     uint32 code = 1;
     // http状态码
     uint32 status = 2;
     // 系统码
     uint32 system = 3;
     // 请求是否成功
-    bool                success = 4;
-    string              message = 5;
-    string              doc     = 6;
-    google.protobuf.Any data    = 7;
+    bool success = 4;
+    // 错误原始信息
+    string message = 5;
+    // 错误提示信息,由i18n返回
+    string prompt = 6;
+    // 可以处理这个错误的文档地址
+    string              doc  = 7;
+    google.protobuf.Any data = 8;
 }
