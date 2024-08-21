@@ -40,4 +40,6 @@ message Http {
     string version = 10;
     // 接口分组
     string group = 11;
+    // rest writer名称
+    string writer_name = 12;
 }
