@@ -4,6 +4,23 @@ package asjard.api;
 
 option go_package = "github.com/asjard/asjard/pkg/protobuf/requestpb;requestpb";
 
+import "github.com/asjard/protobuf/http.proto";
+import "google/protobuf/empty.proto";
+
+service DefaultHandlers {
+    option (asjard.api.serviceHttp) = {
+        api : "/",
+        version : "/",
+        group : "/"
+    };
+    // Return favicon.ico
+    rpc Favicon(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (asjard.api.http) = {
+            get : "/favicon.ico"
+        };
+    }
+}
+
 // 分页请求
 message ReqWithPage {
     int32  page = 1;
@@ -12,6 +29,4 @@ message ReqWithPage {
 }
 
 // Id 请求
-message ReqWithId {
-    int64 id = 1;
-}
+message ReqWithId { int64 id = 1; }
