@@ -14,28 +14,32 @@ service ErrorHandler {
         version : "/",
         group : "/"
     };
-    // 页面未找到
+    // Page not found handler
     rpc NotFound(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/not_found"
+            desc: "Page not found"
         };
     };
-    // 请求方式错误
+    // Method not allowed handler
     rpc MethodNotAllowed(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/method_not_allowed"
+            desc: "Method not allowed"
         };
     };
-    // 奔溃
+    // Panic handler.
     rpc Panic(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/panic"
+            desc: "Panic handler"
         };
     };
-    // 错误
+    // Error handler.
     rpc Error(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/error"
+            desc: "Error handler"
         };
     };
 }

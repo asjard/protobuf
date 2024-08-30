@@ -12,10 +12,11 @@ service Health {
         version : "/",
         group : "/"
     };
-    // healthCheck
+    // HealthCheck.
     rpc Check(HealthCheckRequest) returns (HealthCheckResponse) {
         option (asjard.api.http) = {
             get : "/health"
+            desc: "Health Check"
         };
     };
 }

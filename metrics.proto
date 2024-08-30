@@ -14,10 +14,11 @@ service Metrics {
         version : "/",
         group : "/"
     };
-    // 获取监控指标
+    // Get metrics.
     rpc Fetch(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/metrics"
+            desc: "Metrics"
         };
     }
 }

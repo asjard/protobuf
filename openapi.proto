@@ -7,32 +7,36 @@ option go_package = "github.com/asjard/asjard/pkg/server/rest";
 import "github.com/asjard/protobuf/http.proto";
 import "google/protobuf/empty.proto";
 
-// OpenAPI相关文档
+// API about openapi
 service OpenAPI {
     option (asjard.api.serviceHttp) = {
         api : "/",
         version : "/",
         group : "/"
     };
-    // 获取openapi yaml文件
+    // Get openapi file.
     rpc Yaml(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/openapi.yml"
+            desc: "Get openapi.yml file"
         };
         option (asjard.api.http) = {
             get : "/openapi.yaml"
+            desc: "Get openapi.yaml file"
         };
     };
-    // 文档页面
+    // Redict to configured openapi page.
     rpc Page(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/page/openapi"
+            desc: "Redirect to Openapi page"
         };
     };
-    // Scalar文档页面
+    // Show a scalar openapi page.
     rpc ScalarPage(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/page/scalar/openapi"
+            desc: "Scalar openapi page"
         };
     };
 }
