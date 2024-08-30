@@ -9,12 +9,15 @@ import "github.com/asjard/protobuf/http.proto";
 
 // 监控指标相关接口
 service Metrics {
+    option (asjard.api.serviceHttp) = {
+        api : "/",
+        version : "/",
+        group : "/"
+    };
     // 获取监控指标
     rpc Fetch(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/metrics"
-            api : "/"
-            version : "/"
         };
     }
 }

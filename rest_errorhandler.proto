@@ -9,6 +9,11 @@ import "github.com/asjard/protobuf/http.proto";
 
 // ErrorHandler rest错误处理
 service ErrorHandler {
+    option (asjard.api.serviceHttp) = {
+        api : "/",
+        version : "/",
+        group : "/"
+    };
     // 页面未找到
     rpc NotFound(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {

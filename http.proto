@@ -42,4 +42,6 @@ message Http {
     string group = 11;
     // rest writer名称
     string writer_name = 12;
+    // 接口描述
+    string desc = 13;
 }

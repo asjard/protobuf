@@ -9,20 +9,30 @@ import "google/protobuf/empty.proto";
 
 // OpenAPI相关文档
 service OpenAPI {
+    option (asjard.api.serviceHttp) = {
+        api : "/",
+        version : "/",
+        group : "/"
+    };
     // 获取openapi yaml文件
     rpc Yaml(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/openapi.yml"
-            api : "/"
-            version : "/"
+        };
+        option (asjard.api.http) = {
+            get : "/openapi.yaml"
         };
     };
     // 文档页面
     rpc Page(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/page/openapi"
-            api : "/"
-            version : "/"
+        };
+    };
+    // Scalar文档页面
+    rpc ScalarPage(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (asjard.api.http) = {
+            get : "/page/scalar/openapi"
         };
     };
 }
