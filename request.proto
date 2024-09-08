@@ -4,8 +4,11 @@ package asjard.api;
 
 option go_package = "github.com/asjard/asjard/pkg/protobuf/requestpb;requestpb";
 
+import "google/protobuf/descriptor.proto";
 import "github.com/asjard/protobuf/http.proto";
 import "google/protobuf/empty.proto";
+
+extend google.protobuf.FieldOptions { Validate validate = 70000; }
 
 service DefaultHandlers {
     option (asjard.api.serviceHttp) = {
@@ -30,3 +33,20 @@ message ReqWithPage {
 
 // Id 请求
 message ReqWithId { int64 id = 1; }
+
+// 参数校验
+message Validate {
+    // 校验规则
+    // 参考: https://github.com/go-playground/validator?tab=readme-ov-file
+    // 由于不同的方法有可能会使用同一个message，因此在此基础上扩展不同方法自定义规则
+    //
+    // 格式: [method_name:]<rule>;...;[method_name_N:]<rule_N>
+    // 方法名和规则之间用冒号分隔, 多个规则之间用分号分隔
+    //
+    // 例如:
+    // max=10;Create:required;Update:min=1
+    // 全局校验: max=10
+    // Create方法在全局方法基础上额外添加: required, 最终: max=10,required
+    // Update方法在全局方法基础上额外添加: min=1, 最终: max=10,min=1
+    string rules = 1;
+}
