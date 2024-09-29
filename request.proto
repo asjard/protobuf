@@ -32,3 +32,6 @@ message ReqWithPage {
 
 // Id 请求
 message ReqWithId { int64 id = 1; }
+
+// 空请求
+message Empty {};
