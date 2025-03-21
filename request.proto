@@ -8,7 +8,6 @@ import "google/protobuf/descriptor.proto";
 import "github.com/asjard/protobuf/http.proto";
 import "google/protobuf/empty.proto";
 
-
 service DefaultHandlers {
     option (asjard.api.serviceHttp) = {
         api : "/",
@@ -25,9 +24,10 @@ service DefaultHandlers {
 
 // 分页请求
 message ReqWithPage {
-    int32  page = 1;
-    int32  size = 2;
-    string sort = 3;
+    int32  page   = 1;
+    int32  size   = 2;
+    string sort   = 3;
+    string search = 4;
 }
 
 // Id 请求
