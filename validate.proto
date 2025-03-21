@@ -22,7 +22,7 @@ message Validate {
     // 全局校验: max=10
     // Create方法在全局方法基础上额外添加: required, 最终: max=10,required
     // Update方法在全局方法基础上额外添加: min=1, 最终: max=10,min=1
-    string rules = 1;
+    repeated string rules = 1;
     // 错误码
     uint32 err_code = 2;
 }
