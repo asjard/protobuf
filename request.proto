@@ -6,6 +6,7 @@ option go_package = "github.com/asjard/asjard/pkg/protobuf/requestpb;requestpb";
 
 import "google/protobuf/descriptor.proto";
 import "github.com/asjard/protobuf/http.proto";
+import "github.com/asjard/protobuf/validate.proto";
 import "google/protobuf/empty.proto";
 
 service DefaultHandlers {
@@ -24,14 +25,14 @@ service DefaultHandlers {
 
 // 分页请求
 message ReqWithPage {
-    int32  page   = 1;
-    int32  size   = 2;
+    int32  page   = 1 [ (asjard.api.validate).rules = "min=1" ];
+    int32  size   = 2 [ (asjard.api.validate).rules = "min=5,max=500" ];
     string sort   = 3;
     string search = 4;
 }
 
 // Id 请求
-message ReqWithId { int64 id = 1; }
+message ReqWithId { int64 id = 1 [ (asjard.api.validate).rules = "required" ]; }
 
 // 空请求
 message Empty {};
