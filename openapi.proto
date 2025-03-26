@@ -14,7 +14,7 @@ service OpenAPI {
         version : "/",
         group : "/"
     };
-    // Get openapi file.
+    // Get openapi yaml file.
     rpc Yaml(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/openapi.yml"
@@ -23,6 +23,13 @@ service OpenAPI {
         option (asjard.api.http) = {
             get : "/openapi.yaml"
             desc: "Get openapi.yaml file"
+        };
+    };
+    // Get openapi json file.
+    rpc Json(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (asjard.api.http) = {
+            get : "/openapi.json"
+            desc: "Get openapi.json file"
         };
     };
     // Redict to configured openapi page.
