@@ -32,6 +32,7 @@ message MQ {
     // 设置为true，表示 不能将同一个Conenction中生产者发送的消息传递给这个Connection中 的消费者
     optional bool no_local = 16;
     // 是否阻塞
-    optional bool                no_wait = 17;
-    map<string, string> table   = 18;
+    optional bool       no_wait  = 17;
+    optional bool       internal = 18;
+    map<string, string> table    = 19;
 }
