@@ -11,24 +11,27 @@ extend google.protobuf.ServiceOptions { MQ serviceMq = 80000; }
 
 message MQ {
     // 交换机
-    string exchange = 1;
-    // 交换机类型
-    string kind = 2;
+    oneof exchange {
+        string direct  = 1;
+        string topic   = 2;
+        string fanout  = 3;
+        string headers = 4;
+    }
     // 路由key
-    string route = 3;
+    string route = 10;
     // 消费者
-    string consumer = 4;
+    string consumer = 11;
     // 自动ack
-    bool auto_ack = 5;
+    optional bool auto_ack = 12;
     // 是否持久化
-    bool durable = 6;
+    optional bool durable = 13;
     // 是否自动删除
-    bool auto_delete = 7;
+    optional bool auto_delete = 14;
     // 是否排他
-    bool exclusive = 8;
+    optional bool exclusive = 15;
     // 设置为true，表示 不能将同一个Conenction中生产者发送的消息传递给这个Connection中 的消费者
-    bool no_local = 9;
+    optional bool no_local = 16;
     // 是否阻塞
-    bool                no_wait = 10;
-    map<string, string> table   = 11;
+    optional bool                no_wait = 17;
+    map<string, string> table   = 18;
 }
