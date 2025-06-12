@@ -6,9 +6,9 @@ option go_package = "github.com/asjard/asjard/pkg/protobuf/statuspb";
 import "google/protobuf/any.proto";
 
 message Status {
-    // 原始错误码
+    // 全局唯一错误码: system+status+err_code
     uint32 code = 1;
-    // 丢弃掉http状态码的错误码
+    // 错误码
     uint32 err_code = 2;
     // http状态码
     uint32 status = 3;
@@ -20,7 +20,7 @@ message Status {
     string message = 6;
     // 错误提示信息,由i18n返回
     string prompt = 7;
-    // 可以处理这个错误的文档地址
+    // 可以处理这个错误的文档地址,由i18n返回
     string              doc            = 8;
     // 链路追踪ID
     string              request_id     = 9;
