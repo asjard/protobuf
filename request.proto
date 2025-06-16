@@ -9,6 +9,7 @@ import "github.com/asjard/protobuf/http.proto";
 import "github.com/asjard/protobuf/validate.proto";
 import "google/protobuf/empty.proto";
 
+// 默认接口
 service DefaultHandlers {
     option (asjard.api.serviceHttp) = {
         api : "/",

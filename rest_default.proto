@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package asjard.api;
+
+option go_package = "github.com/asjard/asjard/pkg/server/rest";
+
+import "github.com/asjard/protobuf/http.proto";
+import "google/protobuf/empty.proto";
+
+// rest默认方法
+service RestDefaultHandler {
+    option (asjard.api.serviceHttp) = {
+        api : "/",
+        version : "/",
+        group : "/"
+    };
+    // Return route list
+    rpc Routes(google.protobuf.Empty) returns (RouteInfo) {
+        option (asjard.api.http) = {
+            get : '/routes'
+        };
+    };
+}
+
+// Route info
+message RouteInfo {
+    message Node {
+        string        label    = 1;
+        string        value    = 2;
+        repeated Node children = 3;
+    }
+    repeated Node routes = 1;
+}

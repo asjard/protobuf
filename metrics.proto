@@ -7,7 +7,7 @@ option go_package = "github.com/asjard/asjard/pkg/protobuf/metricspb";
 import "google/protobuf/empty.proto";
 import "github.com/asjard/protobuf/http.proto";
 
-// 监控指标相关接口
+// 监控指标
 service Metrics {
     option (asjard.api.serviceHttp) = {
         api : "/",
