@@ -7,15 +7,15 @@ option go_package = "github.com/asjard/asjard/pkg/server/rest";
 import "github.com/asjard/protobuf/http.proto";
 import "google/protobuf/empty.proto";
 
-// rest默认方法
-service RestDefaultHandler {
+// Routes
+service Routes {
     option (asjard.api.serviceHttp) = {
         api : "/",
         version : "/",
         group : "/"
     };
     // Return route list
-    rpc Routes(google.protobuf.Empty) returns (RouteInfo) {
+    rpc List(google.protobuf.Empty) returns (RouteInfo) {
         option (asjard.api.http) = {
             get : '/routes'
         };
