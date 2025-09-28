@@ -14,15 +14,20 @@ service Routes {
         version : "/",
         group : "/"
     };
-    // Return route list
-    rpc List(google.protobuf.Empty) returns (RouteInfo) {
+    // Return route tree
+    rpc Tree(google.protobuf.Empty) returns (RouteInfo) {
+        option (asjard.api.http) = {
+            get : '/troutes'
+        };
+    };
+    rpc List(google.protobuf.Empty) returns (RouteList) {
         option (asjard.api.http) = {
             get : '/routes'
         };
     };
 }
 
-// Route info
+// Route tree
 message RouteInfo {
     message Node {
         string        label    = 1;
@@ -30,4 +35,9 @@ message RouteInfo {
         repeated Node children = 3;
     }
     repeated Node routes = 1;
+}
+
+// Route list
+message RouteList {
+    repeated string routes = 1;
 }
