@@ -35,4 +35,7 @@ message MQ {
     optional bool       no_wait  = 17;
     optional bool       internal = 18;
     map<string, string> table    = 19;
+    // 数据格式,json,protobuf
+    // 默认protobuf
+    string data_format = 20;
 }
