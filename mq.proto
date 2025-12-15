@@ -38,4 +38,6 @@ message MQ {
     // 数据格式,json,protobuf
     // 默认protobuf
     string data_format = 20;
+    // 队列名称
+    optional string queue = 21;
 }
