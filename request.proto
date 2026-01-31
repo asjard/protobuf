@@ -9,14 +9,17 @@ import "github.com/asjard/protobuf/http.proto";
 import "github.com/asjard/protobuf/validate.proto";
 import "google/protobuf/empty.proto";
 
-// 默认接口
+// Default handlers
+// provides standard utility endpoints for the service.
 service DefaultHandlers {
+    // Service-level HTTP configuration for routing and versioning.
     option (asjard.api.serviceHttp) = {
         api : "/",
         version : "/",
         group : "/"
     };
-    // Return favicon.ico
+
+    // Favicon returns the site icon typically requested by web browsers.
     rpc Favicon(google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (asjard.api.http) = {
             get : "/favicon.ico"
@@ -24,16 +27,26 @@ service DefaultHandlers {
     }
 }
 
-// 分页请求
+// ReqWithPage defines common parameters for paginated list requests.
 message ReqWithPage {
+    // page is the requested page number (must be at least 1).
     int32  page   = 1 [ (asjard.api.validate).rules = "min=1" ];
+
+    // size is the number of items per page (must be between 5 and 500).
     int32  size   = 2 [ (asjard.api.validate).rules = "min=5,max=500" ];
+
+    // sort defines the field and direction for ordering results (e.g., "id desc").
     string sort   = 3;
+
+    // search provides a keyword for filtering the result set.
     string search = 4;
 }
 
-// Id 请求
-message ReqWithId { int64 id = 1 [ (asjard.api.validate).rules = "required" ]; }
+// ReqWithId is used for requests that only require a unique identifier.
+message ReqWithId {
+    // id is the primary identifier of the resource.
+    int64 id = 1 [ (asjard.api.validate).rules = "required" ];
+}
 
-// 空请求
+// Empty is a placeholder message used when no input or output data is required.
 message Empty {};
