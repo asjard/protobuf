@@ -7,7 +7,7 @@ option go_package = "github.com/asjard/asjard/pkg/server/rest";
 import "google/protobuf/empty.proto";
 import "github.com/asjard/protobuf/http.proto";
 
-// ErrorHandler rest错误处理
+// Default err page
 service ErrorHandler {
     option (asjard.api.serviceHttp) = {
         api : "/",
