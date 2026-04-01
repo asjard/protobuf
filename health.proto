@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package asjard.api.health;
+package api.v1;
 
 option go_package = "github.com/asjard/asjard/pkg/protobuf/healthpb;healthpb";
 
