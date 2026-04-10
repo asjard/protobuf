@@ -38,4 +38,10 @@ message MQ {
     // 数据格式,json,protobuf
     // 默认protobuf
     string data_format = 20;
+    // 失败是否重新入队
+    optional bool requeue = 21;
+    // 队列名称
+    string queue = 22;
+    // 重试延迟
+    repeated int32 retry_delays = 24;
 }
