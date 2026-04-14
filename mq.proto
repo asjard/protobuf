@@ -62,6 +62,6 @@ message BackoffRetryPolicy {
     // 退避倍数，1-固定延迟
     float multiplier   = 2;
     int32 max_delay_ms = 3;
-    // 最大重试次数,<0表示无限重试
+    // 最大重试次数,=0表示无限重试
     int32 max_retries = 4;
 }
