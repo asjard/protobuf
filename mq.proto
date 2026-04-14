@@ -43,16 +43,25 @@ message MQ {
     // 队列名称
     string queue = 22;
 
-    // 初始延迟时间
-    int32 initial_delay_ms = 23;
-    // 退避倍数，1-固定延迟
-    float multiplier   = 24;
-    int32 max_delay_ms = 25;
-    // 最大重试次数,<0表示无限重试
-    int32 max_retries = 26;
+    // 重试
+    oneof retry {
+        // 阶梯重试
+        FixedRetryPolicy fixed_retry = 23;
+        // 指数回退
+        BackoffRetryPolicy backoff_retry = 24;
+    }
+}
 
-    // 延迟次数和延迟时间的组合
-    // 如果这个配置不为空或重试次数还在这个配置的列表范围内则优先按照这个配置重试
-    // 否则按照上面配置的指数回退配置重试
-    repeated int32 retry_delays = 27;
+// 阶梯重试策略
+message FixedRetryPolicy { repeated int32 retry_delays = 1; }
+
+// 指数退避重试
+message BackoffRetryPolicy {
+    // 初始延迟时间
+    int32 initial_delay_ms = 1;
+    // 退避倍数，1-固定延迟
+    float multiplier   = 2;
+    int32 max_delay_ms = 3;
+    // 最大重试次数,<0表示无限重试
+    int32 max_retries = 4;
 }
