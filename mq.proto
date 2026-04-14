@@ -42,6 +42,17 @@ message MQ {
     optional bool requeue = 21;
     // 队列名称
     string queue = 22;
-    // 重试延迟
-    repeated int32 retry_delays = 24;
+
+    // 初始延迟时间
+    int32 initial_delay_ms = 23;
+    // 退避倍数，1-固定延迟
+    float multiplier   = 24;
+    int32 max_delay_ms = 25;
+    // 最大重试次数,<0表示无限重试
+    int32 max_retries = 26;
+
+    // 延迟次数和延迟时间的组合
+    // 如果这个配置不为空或重试次数还在这个配置的列表范围内则优先按照这个配置重试
+    // 否则按照上面配置的指数回退配置重试
+    repeated int32 retry_delays = 27;
 }
