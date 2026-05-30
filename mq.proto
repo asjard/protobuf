@@ -50,6 +50,8 @@ message MQ {
         // 指数回退
         BackoffRetryPolicy backoff_retry = 24;
     }
+    // 是否是延迟任务
+    optional bool is_delay_task = 25;
 }
 
 // 阶梯重试策略
