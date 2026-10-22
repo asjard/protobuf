@@ -6,6 +6,9 @@ option go_package = "github.com/asjard/asjard/pkg/protobuf/mcpb;mcpb";
 
 import "google/protobuf/descriptor.proto";
 
-extend google.protobuf.MethodOptions { repeated Mcp mcp = 70000; }
+extend google.protobuf.MethodOptions { repeated Mcp mcp = 80000; }
+extend google.protobuf.FieldOptions { McpType mtype = 90000; }
 
 message Mcp {}
+
+message McpType { string type = 1; }
