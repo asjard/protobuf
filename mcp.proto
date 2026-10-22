@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package asjard.api;
+
+option go_package = "github.com/asjard/asjard/pkg/protobuf/mcpb;mcpb";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MethodOptions { repeated Mcp mcp = 70000; }
+
+message Mcp {}
